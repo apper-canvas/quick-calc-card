@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "firstOperand": 25,
+    "operator": "+",
+    "secondOperand": 15,
+    "result": 40,
+    "timestamp": "2024-01-10T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "firstOperand": 100,
+    "operator": "-",
+    "secondOperand": 25,
+    "result": 75,
+    "timestamp": "2024-01-10T14:35:00Z"
+  },
+  {
+    "Id": 3,
+    "firstOperand": 8,
+    "operator": "×",
+    "secondOperand": 7,
+    "result": 56,
+    "timestamp": "2024-01-10T14:40:00Z"
+  }
+]
