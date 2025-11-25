@@ -1,90 +1,80 @@
-import { motion } from "framer-motion"
-import { useNavigate } from "react-router-dom"
-import ApperIcon from "@/components/ApperIcon"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 
 const NotFound = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="text-center space-y-8 max-w-md mx-auto"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-          className="w-32 h-32 mx-auto bg-gradient-to-br from-slate-200 to-slate-300 rounded-full flex items-center justify-center shadow-lg"
-        >
-          <ApperIcon name="Calculator" size={48} className="text-slate-500" />
-        </motion.div>
-
-        <div className="space-y-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-6xl font-bold text-slate-800 font-mono"
-          >
-            404
-          </motion.h1>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-2xl font-semibold text-slate-700 font-sans"
-          >
-            Page Not Found
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-slate-600 font-sans leading-relaxed"
-          >
-            Oops! The page you're looking for doesn't exist. Let's get you back to calculating!
-          </motion.p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-primary-50 px-4">
+      <div className="max-w-md w-full text-center space-y-8">
+        {/* Icon */}
+        <div className="relative">
+          <div className="w-24 h-24 bg-gradient-to-br from-primary-100 to-sky-200 rounded-full flex items-center justify-center mx-auto">
+            <ApperIcon name="Plane" className="w-12 h-12 text-primary-600" />
+          </div>
+          <div className="absolute inset-0 w-24 h-24 bg-gradient-to-br from-sky-200 to-primary-200 rounded-full mx-auto animate-ping opacity-20"></div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <button
+        {/* Content */}
+        <div className="space-y-4">
+          <h1 className="text-6xl font-bold text-slate-800 gradient-text">404</h1>
+          <h2 className="text-2xl font-bold text-slate-800">Page Not Found</h2>
+          <p className="text-slate-600 leading-relaxed">
+            Looks like this page took an unexpected flight path. The page you're looking for doesn't exist or has been moved to a different altitude.
+          </p>
+        </div>
+
+        {/* Actions */}
+        <div className="space-y-4">
+          <Button 
             onClick={() => navigate("/")}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-200 font-sans"
+            variant="primary"
+            className="w-full inline-flex items-center justify-center gap-2"
           >
-            <ApperIcon name="Calculator" size={20} />
-            Back to Calculator
-          </button>
+            <ApperIcon name="Home" className="w-4 h-4" />
+            Return to Dashboard
+          </Button>
           
-          <button
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button 
+              onClick={() => navigate("/event-calendar")}
+              variant="secondary"
+              className="flex-1 inline-flex items-center justify-center gap-2"
+            >
+              <ApperIcon name="Calendar" className="w-4 h-4" />
+              Events
+            </Button>
+            <Button 
+              onClick={() => navigate("/users")}
+              variant="secondary" 
+              className="flex-1 inline-flex items-center justify-center gap-2"
+            >
+              <ApperIcon name="Users" className="w-4 h-4" />
+              Users
+            </Button>
+          </div>
+
+          <Button 
             onClick={() => window.history.back()}
-            className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-slate-700 font-semibold py-3 px-6 rounded-xl shadow-lg border border-slate-200 transition-all duration-200 font-sans"
+            variant="ghost"
+            className="w-full inline-flex items-center justify-center gap-2"
           >
-            <ApperIcon name="ArrowLeft" size={20} />
+            <ApperIcon name="ArrowLeft" className="w-4 h-4" />
             Go Back
-          </button>
-        </motion.div>
+          </Button>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-sm text-slate-500 font-sans"
-        >
-          Quick Calc - Your reliable calculation companion
-        </motion.div>
-      </motion.div>
+        {/* Footer */}
+        <div className="pt-8 border-t border-slate-200">
+          <p className="text-xs text-slate-500">
+            Need help? Contact your system administrator or check the documentation.
+          </p>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;

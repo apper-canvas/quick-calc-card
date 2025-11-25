@@ -1,0 +1,54 @@
+[
+  {
+    "Id": 1,
+    "name": "Blue Sky Drop Zone",
+    "code": "BSDZ",
+    "address": "1234 Airfield Road",
+    "city": "Springfield",
+    "country": "United States",
+    "timezone": "America/New_York",
+    "status": "active",
+    "activeUsers": 4,
+    "upcomingEvents": 8,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Mountain View Drop Zone",
+    "code": "MVDZ", 
+    "address": "5678 Mountain Ridge Drive",
+    "city": "Denver",
+    "country": "United States",
+    "timezone": "America/Denver",
+    "status": "active",
+    "activeUsers": 3,
+    "upcomingEvents": 12,
+    "createdAt": "2024-01-02T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Coastal Winds Drop Zone",
+    "code": "CWDZ",
+    "address": "9876 Ocean View Boulevard", 
+    "city": "San Diego",
+    "country": "United States",
+    "timezone": "America/Los_Angeles",
+    "status": "active",
+    "activeUsers": 3,
+    "upcomingEvents": 6,
+    "createdAt": "2024-01-03T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Desert Sky Drop Zone",
+    "code": "DSDZ",
+    "address": "2468 Desert Highway",
+    "city": "Phoenix", 
+    "country": "United States",
+    "timezone": "America/Phoenix",
+    "status": "inactive",
+    "activeUsers": 0,
+    "upcomingEvents": 0,
+    "createdAt": "2024-01-04T00:00:00Z"
+  }
+]

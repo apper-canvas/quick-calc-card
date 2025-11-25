@@ -1,51 +1,44 @@
-import React from "react"
-import { motion } from "framer-motion"
-import { cn } from "@/utils/cn"
+import React, { forwardRef } from "react";
+import { cn } from "@/utils/cn";
 
-const Button = React.forwardRef(({ 
-  className, 
-  variant = "default", 
+const Button = forwardRef(({ 
+  children, 
+  variant = "primary", 
   size = "default", 
-  children,
-  pressed = false,
+  disabled = false,
+  className = "", 
   ...props 
 }, ref) => {
+  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5 active:translate-y-0";
+  
   const variants = {
-    default: "bg-white hover:bg-gray-50 text-slate-700 border border-slate-200 shadow-sm",
-    primary: "bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border border-blue-600 shadow-md",
-    secondary: "bg-gradient-to-b from-slate-400 to-slate-500 hover:from-slate-500 hover:to-slate-600 text-white border border-slate-500 shadow-md",
-    clear: "bg-gradient-to-b from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white border border-orange-500 shadow-md",
-    equals: "bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white border border-blue-600 shadow-md"
-  }
-
+    primary: "bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-lg hover:shadow-xl focus:ring-primary-500",
+    secondary: "border-2 border-sky-500 text-sky-600 hover:bg-sky-50 hover:border-sky-600 hover:text-sky-700 focus:ring-sky-500",
+    accent: "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-lg hover:shadow-xl focus:ring-amber-500",
+    danger: "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-lg hover:shadow-xl focus:ring-red-500",
+    ghost: "text-slate-600 hover:text-slate-800 hover:bg-slate-100 focus:ring-slate-500",
+    link: "text-sky-600 hover:text-sky-700 underline-offset-4 hover:underline focus:ring-sky-500",
+  };
+  
   const sizes = {
-    default: "h-16 px-4 text-lg font-semibold rounded-xl",
-    large: "h-20 px-6 text-xl font-bold rounded-xl col-span-2"
-  }
-
+    sm: "px-3 py-1.5 text-sm",
+    default: "px-6 py-3",
+    lg: "px-8 py-4 text-lg",
+    icon: "p-2",
+  };
+  
   return (
-    <motion.button
+    <button
       ref={ref}
-      whileTap={{ scale: 0.95 }}
-      animate={{
-        scale: pressed ? 0.95 : 1,
-        filter: pressed ? "brightness(0.9)" : "brightness(1)"
-      }}
-      transition={{ duration: 0.1 }}
-      className={cn(
-        "relative font-mono transition-all duration-150 active:shadow-inner select-none touch-manipulation",
-        "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1",
-        variants[variant],
-        sizes[size],
-        className
-      )}
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      disabled={disabled}
       {...props}
     >
       {children}
-    </motion.button>
-  )
-})
+    </button>
+  );
+});
 
-Button.displayName = "Button"
+Button.displayName = "Button";
 
-export default Button
+export default Button;

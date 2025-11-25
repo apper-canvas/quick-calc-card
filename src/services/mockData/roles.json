@@ -1,0 +1,112 @@
+[
+  {
+    "Id": 1,
+    "name": "Super Admin",
+    "displayName": "Super Administrator",
+    "permissions": ["all"],
+    "description": "Complete system access with all permissions",
+    "level": 10,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Admin",
+    "displayName": "Administrator", 
+    "permissions": ["manage_users", "manage_events", "manage_shifts", "view_reports"],
+    "description": "Administrative access to manage users and operations",
+    "level": 9,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Event Manager",
+    "displayName": "Event Manager",
+    "permissions": ["manage_events", "assign_roles", "view_calendars"],
+    "description": "Manage skydiving events and role assignments",
+    "level": 7,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Work Administrator", 
+    "displayName": "Work Administrator",
+    "permissions": ["manage_shifts", "assign_workers", "view_schedules"],
+    "description": "Coordinate work schedules and shift assignments",
+    "level": 7,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "Tandem Instructor",
+    "displayName": "Tandem Instructor",
+    "permissions": ["conduct_tandem_jumps", "view_assigned_events"],
+    "description": "Certified instructor for tandem skydiving jumps",
+    "level": 5,
+    "userCount": 3,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "AFF Instructor",
+    "displayName": "AFF Instructor",
+    "permissions": ["conduct_aff_training", "view_assigned_events"],
+    "description": "Accelerated Freefall training instructor",
+    "level": 5,
+    "userCount": 2,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "Tandem Photographer",
+    "displayName": "Tandem Photographer",
+    "permissions": ["capture_tandem_media", "view_assigned_events"],
+    "description": "Specialized photographer for tandem jumps",
+    "level": 4,
+    "userCount": 2,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Jump Leader",
+    "displayName": "Jump Leader (HL)",
+    "permissions": ["lead_group_jumps", "coordinate_formations"],
+    "description": "Experienced jumper who leads group formations",
+    "level": 4,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 9,
+    "name": "Drop Zone Leader",
+    "displayName": "Drop Zone Leader (HFL)",
+    "permissions": ["manage_dropzone", "oversee_operations"],
+    "description": "On-site operational leader for drop zone activities",
+    "level": 6,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 10,
+    "name": "Receptionist",
+    "displayName": "Receptionist",
+    "permissions": ["customer_service", "booking_management"],
+    "description": "Front desk and customer service representative",
+    "level": 2,
+    "userCount": 2,
+    "createdAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "Id": 11,
+    "name": "Manifestor",
+    "displayName": "Manifestor",
+    "permissions": ["manifest_jumpers", "coordinate_loads"],
+    "description": "Coordinate jump loads and manifest participants",
+    "level": 3,
+    "userCount": 1,
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]

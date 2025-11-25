@@ -1,69 +1,47 @@
-import { motion } from "framer-motion"
-import ApperIcon from "@/components/ApperIcon"
+import React from "react";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 
-const ErrorView = ({ message = "Something went wrong", onRetry }) => {
+const ErrorView = ({ 
+  title = "Oops! Something went wrong", 
+  message = "We encountered an error while loading your data. Please try again.", 
+  onRetry, 
+  className = "" 
+}) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 via-orange-50 to-amber-50 p-4">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="text-center space-y-6 max-w-md mx-auto"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-          className="w-20 h-20 mx-auto bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
-        >
-          <ApperIcon name="AlertTriangle" size={32} className="text-white" />
-        </motion.div>
-
-        <div className="space-y-3">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-2xl font-bold text-slate-800 font-sans"
-          >
-            Oops! Something went wrong
-          </motion.h3>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-slate-600 font-sans leading-relaxed"
-          >
-            {message}
-          </motion.p>
+    <div className={`min-h-[400px] flex items-center justify-center p-8 ${className}`}>
+      <div className="text-center max-w-md mx-auto space-y-6">
+        <div className="relative">
+          <div className="w-16 h-16 bg-gradient-to-br from-red-100 to-red-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <ApperIcon name="AlertTriangle" className="w-8 h-8 text-red-600" />
+          </div>
+          <div className="absolute inset-0 w-16 h-16 bg-red-200 rounded-full mx-auto animate-ping opacity-20"></div>
         </div>
-
+        
+        <div className="space-y-3">
+          <h3 className="text-xl font-bold text-slate-800 gradient-text">{title}</h3>
+          <p className="text-slate-600 leading-relaxed">{message}</p>
+        </div>
+        
         {onRetry && (
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onRetry}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-200 font-sans"
-          >
-            <ApperIcon name="RotateCcw" size={18} />
-            Try Again
-          </motion.button>
+          <div className="pt-2">
+            <Button 
+              onClick={onRetry}
+              variant="primary"
+              className="inline-flex items-center gap-2"
+            >
+              <ApperIcon name="RefreshCw" className="w-4 h-4" />
+              Try Again
+            </Button>
+          </div>
         )}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-sm text-slate-500 font-sans"
-        >
-          If the problem persists, please refresh the page
-        </motion.div>
-      </motion.div>
+        
+        <div className="text-xs text-slate-400 pt-4">
+          If this problem persists, please contact support
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ErrorView
+export default ErrorView;

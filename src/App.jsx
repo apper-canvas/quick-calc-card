@@ -1,6 +1,7 @@
-import { RouterProvider } from "react-router-dom"
-import { router } from "@/router"
-import { ToastContainer } from "react-toastify"
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { router } from "@/router";
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        style={{ zIndex: 9999 }}
+        className="z-50"
       />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

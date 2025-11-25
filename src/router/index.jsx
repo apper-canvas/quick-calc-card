@@ -1,54 +1,101 @@
-import { createBrowserRouter } from "react-router-dom"
-import { Suspense, lazy } from "react"
-import Layout from "@/components/organisms/Layout"
+import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Layout from "@/components/organisms/Layout";
 
-const Calculator = lazy(() => import("@/components/pages/Calculator"))
-const NotFound = lazy(() => import("@/components/pages/NotFound"))
+const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
+const EventCalendar = lazy(() => import("@/components/pages/EventCalendar"));
+const WorkCalendar = lazy(() => import("@/components/pages/WorkCalendar"));
+const Users = lazy(() => import("@/components/pages/Users"));
+const Roles = lazy(() => import("@/components/pages/Roles"));
+const DropZones = lazy(() => import("@/components/pages/DropZones"));
+const Settings = lazy(() => import("@/components/pages/Settings"));
+const NotFound = lazy(() => import("@/components/pages/NotFound"));
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="text-center space-y-4">
+      <svg className="animate-spin h-12 w-12 text-primary-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+      </svg>
+      <div className="text-slate-600 font-medium">Loading SkyOps...</div>
+    </div>
+  </div>
+);
 
 const mainRoutes = [
   {
     path: "",
     index: true,
     element: (
-      <Suspense fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-          <div className="text-center space-y-4">
-            <svg className="animate-spin h-12 w-12 text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 714 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-          </div>
-        </div>
-      }>
-        <Calculator />
+      <Suspense fallback={<LoadingFallback />}>
+        <Dashboard />
       </Suspense>
-    )
+    ),
+  },
+{
+    path: "event-calendar",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <EventCalendar />
+      </Suspense>
+    ),
+  },
+  {
+    path: "work-calendar",
+element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <WorkCalendar />
+      </Suspense>
+    ),
+  },
+  {
+    path: "users",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+<Users />
+      </Suspense>
+    ),
+  },
+  {
+    path: "roles",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Roles />
+      </Suspense>
+),
+  },
+  {
+    path: "drop-zones",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <DropZones />
+      </Suspense>
+    ),
+  },
+{
+    path: "settings",
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Settings />
+      </Suspense>
+    ),
   },
   {
     path: "*",
     element: (
-      <Suspense fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-          <div className="text-center space-y-4">
-            <svg className="animate-spin h-12 w-12 text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 714 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-            </svg>
-          </div>
-        </div>
-      }>
+      <Suspense fallback={<LoadingFallback />}>
         <NotFound />
       </Suspense>
-    )
-  }
-]
+    ),
+  },
+];
 
 const routes = [
   {
     path: "/",
     element: <Layout />,
-    children: [...mainRoutes]
-  }
-]
+    children: [...mainRoutes],
+  },
+];
 
-export const router = createBrowserRouter(routes)
+export const router = createBrowserRouter(routes);

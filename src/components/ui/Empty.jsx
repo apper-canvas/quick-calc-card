@@ -1,65 +1,49 @@
-import { motion } from "framer-motion"
-import ApperIcon from "@/components/ApperIcon"
+import React from "react";
+import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 
 const Empty = ({ 
+  icon = "Inbox", 
   title = "No data found", 
-  description = "There's nothing here yet", 
+  message = "There's nothing here yet. Get started by adding your first item.", 
   actionLabel = "Get Started", 
-  onAction 
+  onAction, 
+  className = "" 
 }) => {
   return (
-    <div className="min-h-[400px] flex items-center justify-center p-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="text-center space-y-6 max-w-md mx-auto"
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
-          className="w-24 h-24 mx-auto bg-gradient-to-br from-slate-100 to-slate-200 rounded-full flex items-center justify-center shadow-inner"
-        >
-          <ApperIcon name="Calculator" size={36} className="text-slate-400" />
-        </motion.div>
-
-        <div className="space-y-3">
-          <motion.h3
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl font-semibold text-slate-700 font-sans"
-          >
-            {title}
-          </motion.h3>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-slate-500 font-sans leading-relaxed"
-          >
-            {description}
-          </motion.p>
+    <div className={`min-h-[400px] flex items-center justify-center p-8 ${className}`}>
+      <div className="text-center max-w-md mx-auto space-y-6">
+        <div className="relative">
+          <div className="w-20 h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-full flex items-center justify-center mx-auto">
+            <ApperIcon name={icon} className="w-10 h-10 text-slate-400" />
+          </div>
+          <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-sky-100 to-primary-100 rounded-full mx-auto animate-pulse opacity-50"></div>
         </div>
-
+        
+        <div className="space-y-3">
+          <h3 className="text-xl font-bold text-slate-800 gradient-text">{title}</h3>
+          <p className="text-slate-600 leading-relaxed">{message}</p>
+        </div>
+        
         {onAction && (
-          <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onAction}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-200 font-sans"
-          >
-            <ApperIcon name="Plus" size={18} />
-            {actionLabel}
-          </motion.button>
+          <div className="pt-2">
+            <Button 
+              onClick={onAction}
+              variant="primary"
+              className="inline-flex items-center gap-2"
+            >
+              <ApperIcon name="Plus" className="w-4 h-4" />
+              {actionLabel}
+            </Button>
+          </div>
         )}
-      </motion.div>
+        
+        <div className="text-xs text-slate-400 pt-4">
+          Start building your skydiving operation today
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Empty
+export default Empty;
